@@ -1,0 +1,19 @@
+{% extends "base.html.jinja" %}
+{% block content %}
+    <div class="container px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="/static/weather-28719_640.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Dziękuję za skorzystanie z Weather Scrapera</h1>
+            <p class="lead">Projekt ten jest tworzony w celach edukacujnych. Dane pobierane sa ze strony <b>https://www.meteoprog.pl/pl/</b>. Scraper jest storzony do pobierania danych odnośnie polskich miejscowości. Jeśli chcesz się mu jeszcze bliżej przyjrzeć zapraszam do skorzystania z linków poniżej &#128523;</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="{{url_for('extract')}}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Pobierz dane</button></a>
+            <a href="{{url_for('locations')}}""><button type="button" class="btn btn-outline-secondary btn-lg px-4">Lista lokalizacji</button></a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <p>Projekt na podniesienie oceny stworzony przez Jarosław Kołdun</p>
+{% endblock content %}

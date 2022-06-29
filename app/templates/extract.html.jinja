@@ -1,0 +1,31 @@
+{% extends "base.html.jinja" %}
+{% block content %}
+    <div class="container px-4 py-5" id="hanging-icons">
+      <h2 class="pb-2 border-bottom">Pobierz dane pogodowe</h2>
+      <div class="row g-4 py-5">
+        <div class="col d-flex align-items-start">
+          <div class="icon-square text-dark flex-shrink-0 mx-auto">
+              <form action="{{url_for('extract')}}" method="POST">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <i class="bi bi-cloud-download-fill p-2" style="font-size: 30px;"></i>
+                        <label for="location_name" class="col-form-label"> Wpisz nazwę miejscowości (bez polskich znaków)</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="location_name" name="location_name" class="form-control">
+                    </div>
+                    <div class="col-auto">
+                        <input type="submit" class="btn btn-primary" value="Pobierz">
+                    </div>
+                </div>
+            </form>
+          </div>
+          
+        </div>
+        
+        
+      </div>
+    </div>
+{% endblock content %}
+
+        

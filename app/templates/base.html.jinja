@@ -2,8 +2,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Ceneo Web Scraper</title>
-        <!-- CSS only -->
+        <title>Weather Scraper</title>
+        <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
         <!-- JavaScript Bundle with Popper -->
@@ -11,24 +27,24 @@
     </head>
     <body>
         <header class="container text-center">
-            <h1 class="display-1">Ceneo Web Scraper</h1>
+            <h1 class="display-1">Weather Scraper</h1>
         </header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light container">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link""><i class="bi bi-house-fill"></i> Strona główna</a>
+                            <a class="nav-link" href="{{url_for('index')}}"><i class="bi bi-house-fill"></i> Strona główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"><i class="bi bi-cloud-download-fill"></i>
- Pobierz produkt</a>
+                            <a class="nav-link" href="{{url_for('extract')}}"><i class="bi bi-cloud-download-fill"></i>
+ Pobierz dane</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"><i class="bi bi-list-stars"></i> Lista produktów</a>
+                            <a class="nav-link" href="{{url_for('locations')}}"><i class="bi bi-list-stars"></i> Lista lokalizacji</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"><i class="bi bi-person-circle"></i> O autorze</a>
+                            <a class="nav-link" href="{{url_for('author')}}"><i class="bi bi-person-circle"></i> O autorze</a>
                         </li>
                     </ul>
                 </div>
@@ -36,9 +52,6 @@
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-3">
-
-                </div>
                 <div class="col">
                     {% block content %}
                         <p>base.html.jinja</p>

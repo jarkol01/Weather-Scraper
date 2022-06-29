@@ -1,0 +1,35 @@
+{% extends "base.html.jinja" %}
+{% block content %}
+    <h1>{{location_name}}</h1>
+    {% for day in all_days %}
+    
+        <h3>{{day[0]}}</h3>
+        <table>
+        <tbody>
+        <tr>
+        <th>Czas</th>
+        <th>Temperatura</th>
+        <th>Prawdopodobieństwo opadów</th>
+        <th>Opday</th>
+        <th>Ciśnienie</th>
+        <th>Wilgotność</th>
+        <th>Wiatr</th>
+        </tr>
+        {% for i in range(24) %}
+            <tr>
+            <td>{{"{:02d}:00".format(i)}}</td>
+            <td>{{day[1]['temperature'][i]}}&#8451;</td>
+            <td>{{day[1]['propability_of_rain'][i]}}%</td>
+            <td>{{day[1]['rain'][i]}} mm</td>
+            <td>{{day[1]['pressure'][i]}} mmHg</td>
+            <td>{{day[1]['humidity'][i]}}%</td>
+            <td>{{day[1]['wind'][i]}} m/s</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        <br><br>
+    {% endfor %}
+
+
+{% endblock content %}
