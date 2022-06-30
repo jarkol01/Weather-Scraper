@@ -18,15 +18,17 @@ class Location():
         url = f'https://www.meteoprog.pl/pl/meteograms/{self.name}/'
         response = requests.get(url)
         page = BeautifulSoup(response.text, 'html.parser')
-
-        if not os.path.exists("app/locations"):
-            os.makedirs("app/locations")
-        if not os.path.exists(f"app/locations/{self.name}"):
-            os.makedirs(f"app/locations/{self.name}")
-
-        for day in page.select('div.weather-details-hourly__item'):
-            self.days.append(day.select_one('div.title').select_one('span').string)
-            x = Day()
-            x.extract_day(day)
-
-            x.save_day(self.name)
+        
+        if len(page.select('div.weather-details-hourly__item')) > 0:
+            if not os.path.exists("app/locations"):
+                os.makedirs("app/locations")
+            if not os.path.exists(f"app/locations/{self.name}"):
+                os.makedirs(f"app/locations/{self.name}")
+            for day in page.select('div.weather-details-hourly__item'):
+                self.days.append(day.select_one('div.title').select_one('span').string)
+                x = Day()
+                x.extract_day(day)
+                x.save_day(self.name)
+            return True
+        else:
+            return False
